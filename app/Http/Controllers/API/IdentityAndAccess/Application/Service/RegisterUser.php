@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\IdentityAndAccess\Application\UseCases;
+namespace App\Http\Controllers\API\IdentityAndAccess\Application\Service;
 
 use App\Http\Controllers\API\IdentityAndAccess\Domain\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Validator;
