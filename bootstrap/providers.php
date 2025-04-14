@@ -1,5 +1,6 @@
 <?php
 
 return [
-    App\Providers\AppServiceProvider::class,
+    App\Providers\AppServiceUser::class,
+    App\Providers\AppServiceWeather::class,
 ];

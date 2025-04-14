@@ -7,7 +7,7 @@ use App\Http\Controllers\API\IdentityAndAccess\Domain\Repositories\UserRepositor
 use Illuminate\Support\ServiceProvider;
 
 
-class AppServiceProvider extends ServiceProvider
+class AppServiceUser extends ServiceProvider
 {
     public function register()
     {

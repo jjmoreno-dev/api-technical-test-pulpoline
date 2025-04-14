@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\API\IdentityAndAccess\Application\UseCases;
+namespace App\Http\Controllers\API\IdentityAndAccess\Application\Service;
 use Illuminate\Support\Facades\Auth;
 class LoginUser
 {
