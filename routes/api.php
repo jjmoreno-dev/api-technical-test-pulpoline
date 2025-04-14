@@ -21,6 +21,7 @@ Route::group(["middleware" => ["auth:api"]], function(){
 
    // Route::get('weather/forecast', [WeatherController::class, 'forecast']);
     Route::get('forecastweather', [WeatherController::class, 'forecastweather']);
+    Route::post('favorite', [WeatherController::class, 'favorite']);
     
 });
 

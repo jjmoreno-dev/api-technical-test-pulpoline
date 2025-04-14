@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\API\Weather\Application\Service\Createfavorite;
 use App\Http\Controllers\API\Weather\Application\Service\GetForecastweather;
-use App\Http\Controllers\API\Weather\Application\Service\RegisterHistorie;
+use App\Http\Controllers\API\Weather\Application\Service\CreateHistorie;
 
 
 use Illuminate\Http\Request;
@@ -11,16 +12,27 @@ use Illuminate\Http\Request;
 class WeatherController extends BaseController
 {
     private GetForecastweather $getForecast;
-    private RegisterHistorie $registerHistorie;
+    private CreateHistorie $createHistorie;
+    private Createfavorite $createfavorite;
 
     public function __construct(        
         GetForecastweather $getForecast,
-        RegisterHistorie $registerHistorie,
+        CreateHistorie $createHistorie,
+        Createfavorite $createfavorite,
     ) {       
         $this->getForecast = $getForecast;
-        $this->registerHistorie = $registerHistorie;
+        $this->createHistorie = $createHistorie;
+        $this->createfavorite = $createfavorite;
     }
     
+    public function favorite(Request $request){
+        try {
+            $success = $this->createfavorite->execute($request->all());
+            return $this->sendResponse($success, 'Favorite registered successfully.');
+        } catch (\Exception $e) {
+            return $this->sendResponse('Registration failed.', ['error' =>json_decode($e->getMessage())]);  
+        }
+    }
     public function forecastweather(Request $request){
         try {
             $getDataEndPoint = $this->getForecast->execute($request->all());           
@@ -31,10 +43,10 @@ class WeatherController extends BaseController
             ];
                        
             try {
-                $dataHistorie = $this->registerHistorie->execute( $dataCreateHistory);               
+                $dataHistorie = $this->createHistorie->execute( $dataCreateHistory);               
                 $weatherApiAata=json_decode($dataHistorie['weatherapi_data']);
                 return $this->sendResponse([
-                     'id'=> $dataHistorie['id'],
+                     'id_historie'=> $dataHistorie['id'],
                      'user_id'=> $dataHistorie['user_id'],
                      'city'=> $dataHistorie['city'],
                      'localtime'=> $weatherApiAata->location->localtime,
