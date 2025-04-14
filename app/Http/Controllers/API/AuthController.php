@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\API\IdentityAndAccess\Application\UseCases\RegisterUser;
-use App\Http\Controllers\API\IdentityAndAccess\Application\UseCases\LoginUser;
-use App\Http\Controllers\API\IdentityAndAccess\Application\UseCases\LogoutUser;
-use App\Http\Controllers\API\IdentityAndAccess\Application\UseCases\RefreshToken;
+use App\Http\Controllers\API\IdentityAndAccess\Application\Service\RegisterUser;
+use App\Http\Controllers\API\IdentityAndAccess\Application\Service\LoginUser;
+use App\Http\Controllers\API\IdentityAndAccess\Application\Service\LogoutUser;
+use App\Http\Controllers\API\IdentityAndAccess\Application\Service\RefreshToken;
 use Illuminate\Http\Request;
 
 class AuthController extends BaseController
